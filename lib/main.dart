@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Sizer(
       builder: (context, orientation, screenType) {
-        return const MaterialApp(
+        return const MaterialApp(debugShowCheckedModeBanner: false,
           home: HomePage(),
         );
       },
