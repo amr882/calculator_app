@@ -13,8 +13,8 @@ class CalcButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 20.w,
-        height: 20.w,
+        width: 23.w,
+        height: 10.h,
         decoration: BoxDecoration(
             color: color, borderRadius: BorderRadius.circular(20)),
         child: Center(
