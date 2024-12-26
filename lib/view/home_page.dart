@@ -1,5 +1,6 @@
 import 'package:calculator/components/calc_button.dart';
 import 'package:flutter/material.dart';
+import 'package:function_tree/function_tree.dart';
 import 'package:sizer/sizer.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,16 +12,22 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String res = "0";
-  String exp = "0";
-  addExp(String num) {
+  String equation = "0";
+  addequation(String num) {
     setState(() {
-      if (exp == "0") {
-        exp = "";
-        exp = exp + num;
+      if (equation.length == 15) {
+        return;
       } else {
-        exp = exp + num;
+        setState(() {
+          if (equation == "0") {
+            equation = "";
+            equation = equation + num;
+          } else {
+            equation = equation + num;
+          }
+          print(equation);
+        });
       }
-      print(exp);
     });
   }
 
@@ -33,18 +40,53 @@ class _HomePageState extends State<HomePage> {
             return Scaffold(
                 backgroundColor: const Color(0xff17171c),
                 body: Padding(
-                  padding:  EdgeInsets.symmetric(vertical: 2.h),
+                  padding: EdgeInsets.symmetric(vertical: 2.h),
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         // first row
                         Expanded(
-                          child: SizedBox(
-                            child: Align(
-                              alignment: Alignment.bottomRight,
-                              child: Text(
-                                exp,
-                                style: const TextStyle(color: Colors.white),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: SizedBox(
+                              child: Align(
+                                alignment: Alignment.bottomRight,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          children: [
+                                            Text(
+                                              equation,
+                                              style: TextStyle(
+                                                  color:
+                                                      const Color(0xff747477),
+                                                  fontSize: 5.h),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        Text(
+                                          res,
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize:
+                                                res.length > 10 ? 4.h : 7.h,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -53,112 +95,115 @@ class _HomePageState extends State<HomePage> {
                           child: Column(
                             children: [
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
                                 children: [
                                   CalcButton(
                                     color: const Color(0xff4e505f),
-                                    exp: "C",
+                                    equation: "C",
                                     onTap: () {
                                       setState(() {
-                                        exp = "0";
+                                        equation = "0";
                                       });
                                     },
                                   ),
                                   CalcButton(
                                     color: const Color(0xff4e505f),
-                                    exp: "-/+",
+                                    equation: "-/+",
                                     onTap: () {
-                                      addExp("-");
+                                      addequation("-");
                                     },
                                   ),
                                   CalcButton(
                                     color: const Color(0xff4e505f),
-                                    exp: "%",
+                                    equation: "%",
                                     onTap: () {
-                                      addExp("%");
+                                      addequation("%");
                                     },
                                   ),
                                   CalcButton(
                                     color: const Color(0xff4b5efc),
-                                    exp: "/",
+                                    equation: "/",
                                     onTap: () {
-                                      addExp("/");
+                                      addequation("/");
                                     },
                                   ),
                                 ],
                               ),
-                  
+
                               // 2nd row
                               SizedBox(
                                 height: 2.h,
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
                                 children: [
                                   CalcButton(
                                     color: const Color(0xff2e2f38),
-                                    exp: "7",
+                                    equation: "7",
                                     onTap: () {
-                                      addExp("7");
+                                      addequation("7");
                                     },
                                   ),
                                   CalcButton(
                                     color: const Color(0xff2e2f38),
-                                    exp: "8",
+                                    equation: "8",
                                     onTap: () {
-                                      addExp("8");
+                                      addequation("8");
                                     },
                                   ),
                                   CalcButton(
                                     color: const Color(0xff2e2f38),
-                                    exp: "9",
+                                    equation: "9",
                                     onTap: () {
-                                      addExp("9");
+                                      addequation("9");
                                     },
                                   ),
                                   CalcButton(
                                     color: const Color(0xff4b5efc),
-                                    exp: "X",
+                                    equation: "X",
                                     onTap: () {
-                                      addExp("*");
+                                      addequation("*");
                                     },
                                   ),
                                 ],
                               ),
                               // 3 row
-                  
+
                               SizedBox(
                                 height: 2.h,
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
                                 children: [
                                   CalcButton(
                                     color: const Color(0xff2e2f38),
-                                    exp: "4",
+                                    equation: "4",
                                     onTap: () {
-                                      addExp("4");
+                                      addequation("4");
                                     },
                                   ),
                                   CalcButton(
                                     color: const Color(0xff2e2f38),
-                                    exp: "5",
+                                    equation: "5",
                                     onTap: () {
-                                      addExp("5");
+                                      addequation("5");
                                     },
                                   ),
                                   CalcButton(
                                     color: const Color(0xff2e2f38),
-                                    exp: "6",
+                                    equation: "6",
                                     onTap: () {
-                                      addExp("6");
+                                      addequation("6");
                                     },
                                   ),
                                   CalcButton(
                                     color: const Color(0xff4b5efc),
-                                    exp: "−",
+                                    equation: "−",
                                     onTap: () {
-                                      addExp("-");
+                                      addequation("-");
                                     },
                                   ),
                                 ],
@@ -168,72 +213,90 @@ class _HomePageState extends State<HomePage> {
                                 height: 2.h,
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
                                 children: [
                                   CalcButton(
                                     color: const Color(0xff2e2f38),
-                                    exp: "1",
+                                    equation: "1",
                                     onTap: () {
-                                      addExp("1");
+                                      addequation("1");
                                     },
                                   ),
                                   CalcButton(
                                     color: const Color(0xff2e2f38),
-                                    exp: "2",
+                                    equation: "2",
                                     onTap: () {
-                                      addExp("2");
+                                      addequation("2");
                                     },
                                   ),
                                   CalcButton(
                                     color: const Color(0xff2e2f38),
-                                    exp: "3",
+                                    equation: "3",
                                     onTap: () {
-                                      addExp("3");
+                                      addequation("3");
                                     },
                                   ),
                                   CalcButton(
                                     color: const Color(0xff4b5efc),
-                                    exp: "+",
+                                    equation: "+",
                                     onTap: () {
-                                      addExp("+");
+                                      addequation("+");
                                     },
                                   ),
                                 ],
                               ),
                               // 5 row
-                  
+
                               SizedBox(
                                 height: 2.h,
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
                                 children: [
                                   CalcButton(
                                     color: const Color(0xff2e2f38),
-                                    exp: ".",
+                                    equation: ".",
                                     onTap: () {
-                                      addExp(".");
+                                      addequation(".");
                                     },
                                   ),
                                   CalcButton(
                                     color: const Color(0xff2e2f38),
-                                    exp: "0",
+                                    equation: "0",
                                     onTap: () {
-                                      addExp("0");
+                                      addequation("0");
                                     },
                                   ),
                                   CalcButton(
                                     color: const Color(0xff2e2f38),
-                                    exp: "D",
+                                    equation: "D",
                                     onTap: () {
-                                      // delete num
+                                      setState(() {
+                                        if (equation != "0") {
+                                          equation = equation.substring(
+                                              0, equation.length - 1);
+                                          if (equation == "") {
+                                            equation = "0";
+                                          }
+                                        } else {
+                                          return;
+                                        }
+                                      });
                                     },
                                   ),
                                   CalcButton(
                                     color: const Color(0xff4b5efc),
-                                    exp: "=",
+                                    equation: "=",
                                     onTap: () {
-                                      //calc
+                                      setState(() {
+                                        if (equation == "0") {
+                                          return;
+                                        } else {
+                                          res = equation.interpret().toString();
+                                        }
+                                      });
                                     },
                                   ),
                                 ],
