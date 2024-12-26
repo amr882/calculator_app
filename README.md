@@ -8,6 +8,8 @@ This project is a starting point for a Flutter application.
 
 Simple calculator with responsive ui design , mathematical operations
 
+![IMAGE_DESCRIPTION](screenshots/calc3.png)
+
 ![IMAGE_DESCRIPTION](screenshots/calc.png)
 
 ![IMAGE_DESCRIPTION](screenshots/calc2.png)
